@@ -1,0 +1,175 @@
+---
+title: "End of semester quiz"
+subtitle: "Methods 1, Fall 2020"
+author: "Fabio Trecca"
+date: "10/27/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.align="center")
+```
+
+### 1) What approximates a normal distribution regardless of its underlying generating distribution? (Lecture 2)
+
+* Sampling distribution of the sample standard deviations
+* **Sampling distribution of the sample means**
+* Sampling distribution of the sample variances
+* Standard error of the sampling distribution
+
+If we sample multiple times from a distribution and take the mean of each sample, then the distribution of these samples (called the "sampling distribution of the sample means") will approximate a normal distribution. This rule is commonly referred to as the Central Limit Theorem. Note that you need a large enough number of samples (rule of thumb: >30) for the sampling distribution to begin approximating a normal distribution.
+
+See here for a nice demonstration: http://onlinestatbook.com/stat_sim/sampling_dist/index.html
+
+
+### 2) How do we know if a normal distribution is symmetrical only by looking at measures of central tendency? (Lecture 3)
+
+* mean > median > mode
+* mean > median < mode
+* mean < median < mode
+* **mean = median = mode**
+
+In a symmetrical normal distribution, the three measures of central tendency (mean = sum of values divided by number of values; median = the value that divides the (ordered) distribution in two quantiles of equal size; mode = the most frequent value in the distribution) will be very close to each other. In a left-skewed distribution, mode > median > mean; in a right-skewed distribution, mode < median < mean.
+
+
+### 3) The variance is NOT a measure of... (Lecture 3)
+
+* **How well your sample mean represents your population mean**
+* Whether the null model is a good model for the data
+* Whether the mean is a good model of the data
+* The spread of the data around the mean
+
+The variance is a measure of how much the individual data points are spread out around the mean. It is the mean of the sum of squared deviances: 
+$$s^2 = \frac {\Sigma(x_{i}-\overline x)^2} {N-1}$$
+
+In this sense, the variance is both a measure of the spread of the data around the mean, a measure of whether the mean is a good model of the data (smaller variance = better model), and of whether the null model is a good model for the data (given that null model and mean are the same thing). However, the variance only tells you something about your sample and not about the population it came from.
+
+
+### 4) The standard deviation is: (Lecture 3)
+
+* **The square root of the variance**
+* The deviance squared
+* The variance squared
+* The square root of the deviance
+
+Since deviance and variance are in units squared, we normally quantify deviation around the mean in terms of standard deviation, which is the square root of the variance — taking the square root brings everything back to the original scale.
+
+
+### 5) Why do we sometimes transform the data before running a parametric test? (Lecture 4)
+
+* To get a smaller variance
+* **To make the data look more normally distributed**
+* To get a smaller deviance
+* To make the data look less normally distributed
+
+Parametric tests most often assume that the data are normally distributed. We can transform non-normal data to make it more normal, which allows us to run parametric tests on them. Transforming means that we change the scale of the data so that the shape of the distribution changes — but not the relationship between the individual data points.
+
+### 6) What is the covariance? (Lecture 5)
+
+* The average increase of Y for each increase of X
+* The number of data points minus one (N-1)
+* **The average cross-product deviance of two variables**
+* The correlation coefficient
+
+The covariance is a measure of how much two variables vary together, and it is quantified as the mean sum of all the deviances for one variable multiplied by the deviances for the other variable:
+
+$$cov(x,y) = \frac {\Sigma(x_{i}-\overline x) (y_{i}-\overline y)} {N-1}$$
+
+The correlation coefficient $r$ is the standardized covariance, i.e., the covariance devided by the product of the standard deviation of the first variable and the standard deviation of the second variable.
+
+### 7) What is the coefficient of determination? (Lecture 5)
+
+* _F_
+* **_R_^2^**
+* _t_
+* Pearson's _r_
+
+_R_^2^ is Pearson's _r_ at the power of two, which gives us a value between 0 and 1 expressing the proportion of the total variance in the data that is shared by the two variables.
+
+### 8) The t-test is a test of: (Lecture 6)
+
+* Equality of two variances
+* **Differences between two means**
+* Differences between 3+ means
+* Homoschedasticity
+
+This is quite self-explanatory :) 
+
+
+### 9) The p-value is: (Lecture 6)
+
+* **The probability of obtaining a specific value under H~0~**
+* The probability that H~0~ is true
+* The probability that H~1~ is false
+* A measure of the size of an effect
+
+These four answers all sound very similar and even senior researchers sometimes mix them together. However, the right answer is #1: the p-values tells you how likely you are to get a value in a test (e.g., a t-value or an F-value) that is at least as extreme (high or low) as the one you get under the null hypothesis. If the p-value is < 0.05, this means that, under the null hypothesis, the test you are running will only give you that result 5% of the time. Scientists commonly use this 5% threshold as a cut-off point for rejecting the null hypothesis with enough confidence and considering the alternative hypothesis.
+
+
+### 10) A repeated-measures design: (Lecture 6)
+
+* Can only be within subjects
+* **Can be both within and between subjects**
+* Is a quasi-experiment
+* Can only be between subjects
+
+Repeated-measures only means that you are collecting multiple observations/data points from each participants. This is independent from whether the participant is only assigned to one condition (between-subjects design) or whether the same participant is exposed to all conditions in your experiment (within-subjects design). Within-subjects design are by definition repeated-measures, since you are collecting multiple data points from the same subject.
+
+### 11) In the regression equation, $\varepsilon_{i}$ represents: (Lecture 7)
+
+* The deviance of the model line from the null model
+* The deviance of the data points from the null model
+* The deviance of the data points from the grand mean
+* **The deviance of the data points from the model line**
+
+$\varepsilon_{i}$ represents the difference between the regression line (the fitted model) and the actual data points. So basically is the same as the deviance we talked about above, but instead of calculating the deviance of each data point from the mean, we are calculating the deviance of each data point from the regression line (or better, the values predicted by the regression model).
+
+### 12) The output of the ANOVA test is which statistic? (Lecture 8)
+
+* *t*-statistic
+* **_F_-statistic**
+* *z*-statistic
+* *r* coefficient
+
+ANOVA returns an *F* value, which is a measure of the ratio between the variance explained by the model to the variance that is still unexplained after fitting the model.
+
+### 13) The *F*-statistic is the ratio between: (Lecture 8)
+
+* MS~R~ / MS~T~
+* MS~R~ / MS~M~
+* **MS~M~ / MS~R~**
+* MS~T~ / MS~M~
+
+As mentioned above — but now in more technical terms — *F* is the ratio of the Mean Sum of squares of the Model (= the explained variance) over the Mean Sum of squares of the Residuals (= the unexplained variance):
+
+$$F = \frac {MS_{M}} {MS_{R}} = \frac {(\frac {SS_{M}} {{p_{2}-p_{1}}})} {(\frac {SS_{R}} {n-p_{2}})} $$
+
+### 14) Systematic variance is: (Lecture 9)
+
+* **The difference in outcomes that is due to my experiment**
+* The difference in outcomes that is due to differences across participants
+* The difference in outcomes that is due to differences across trials
+* The difference in outcomes that is due to situational factors
+
+If my experiment is designed in the right way, I will observe differences in the participants' outcomes across conditions. The differences I will observe within conditions, on the other hand, are unsystematic variance (unsystematic variance can also occur across conditions, but this is generally a sign that my study design is not good enough).
+
+### 15) Odds are the ratio between: (Lecture 10)
+
+* The P of something not happening and the P of something happening
+* The P of something not happening and the DF
+* **The P of something happening and the P of something not happening**
+* The P of something not happening and the P of the H0 being true
+
+This is also pretty self-explanatory! Odds are $\frac {p} {1-p}$, i.e. the ratio between how probable something is to happen (a value from 0 to 1) and the opposite (1 - the value of P). Probabilities go from 0 to 1, odds range from 0 to Inf $\infty$. 
+
+### 16) Cohen's $\kappa$ is: (Lecture 11)
+
+* The percent agreement between 2+ coders that is not due to chance
+* The percent agreement between 2 coders
+* **The percent agreement between 2 coders that is not due to chance**
+* The percent agreement between 2+ coders that is not due to chance
+
+True story. It's $\kappa = 1- \frac{1-p_{o}} {1-p_{e}}$, which is the observed percent agreement between two coders when factoring out the expected percent agreement. If you have more than 2 coders, then Krippendorff's $\alpha$ is the way.
+
+
+
